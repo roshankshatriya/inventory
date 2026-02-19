@@ -1,6 +1,6 @@
-import { BarChart3, Package, Plus, Settings } from "lucide-react";
+import { BarChart3, Package, Plus, Settings, Home } from "lucide-react";
 import Link from "next/link";
-import { Button } from "./ui/button";
+import SignOutButton from "./signout-button";
 
 export default function Sidebar({
   currentPath = "/dashboard",
@@ -33,11 +33,10 @@ export default function Sidebar({
             <Link
               href={item.href}
               key={key}
-              className={`flex items-center space-x-3 py-2 px-3 rounded-lg ${
-                isActive
+              className={`flex items-center space-x-3 py-2 px-3 rounded-lg ${isActive
                   ? "bg-purple-100 text-gray-800"
                   : "hover:bg-gray-800 text-gray-300"
-              }`}
+                }`}
             >
               <IconComponent className="w-5 h-5" />
               <span className="text-sm">{item.name}</span>
@@ -46,9 +45,22 @@ export default function Sidebar({
         })}
       </nav>
 
-      <div className="absolute bottom-0 left-0 right-0 p-6 border-t border-gray-700">
+      <div className="absolute bottom-0 left-0 right-0 p-6 border-t border-gray-700 space-y-3">
+        <Link
+          href="/"
+          className="flex items-center gap-2 text-gray-400 hover:text-gray-200 text-xs transition-colors"
+        >
+          <Home className="w-3.5 h-3.5" />
+          Back to Site
+        </Link>
         <div className="flex items-center justify-between">
-          <Button >Roshan Raviraj</Button>
+          <div className="flex items-center gap-2">
+            <div className="w-7 h-7 rounded-full bg-purple-600 flex items-center justify-center text-xs font-bold text-white">
+              RR
+            </div>
+            <span className="text-sm text-gray-300 font-medium">Roshan Raviraj</span>
+          </div>
+          <SignOutButton className="text-xs text-gray-500 hover:text-red-400 transition-colors" />
         </div>
       </div>
     </div>
